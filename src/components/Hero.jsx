@@ -14,7 +14,13 @@ const Hero = () => {
           <h1 className="text-white text-lg md:text-3xl font-thin">
             Discover the Best Deals Today!
           </h1>
-          <GoChevronDown size={80} color="white" className="mt-10 w-full" />
+          <a href="#favorites">
+            <GoChevronDown
+              size={80}
+              color="white"
+              className="mt-10 w-full hover:scale-125 transition-transform duration-300"
+            />
+          </a>
         </div>
       </div>
       <h2></h2>
