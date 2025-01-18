@@ -1,32 +1,52 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 
-const Navbar = ({ isAtTop }) => {
+const Navbar = () => {
+  const navigate = useNavigate();
+  const [isAtTop, setIsAtTop] = useState(true);
+  const [showNavBar, setShowNavBar] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsAtTop(window.scrollY === 0);
+      if (window.scrollY > lastScrollY) {
+        setShowNavBar(false);
+      } else {
+        setShowNavBar(true);
+      }
+      setLastScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [lastScrollY]);
+
   return (
     <header
-      style={{
-        backgroundColor: isAtTop ? "transparent" : "black",
-        padding: isAtTop ? "15px" : "8px",
-        transition:
-          "background-color 0.5s ease-in-out, padding 0.5s ease-in-out",
-      }}
-      className="fixed w-full p-3 z-50"
+      className={`bg-black bg-opacity-50 text-white py-2 px-4 fixed w-full top-0 z-10 transition-transform duration-300 ${
+        showNavBar ? "translate-y-0" : "-translate-y-full"
+      }`}
     >
-      <div></div>
       <div className="flex justify-between items-center w-full">
-        <div className="flex mx-5 my-1">
+        <NavLink to="/" className="flex mx-5 my-1 font-serif">
           <h1 className="text-white text-4xl font-thin">Shop</h1>
           <h1 className="text-white text-4xl font-bold">Ease</h1>
-        </div>
+        </NavLink>
         <nav className="text-white font-thin">
           <NavLink
-            className="text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 mr-4"
+            disabled={!showNavBar}
+            className="text-white hover:bg-gray-600 hover:text-white rounded-md px-3 py-2 mr-4"
             to="/"
           >
             Home
           </NavLink>
           <NavLink
-            className="text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 mr-4"
+            disabled={!showNavBar}
+            className="text-white hover:bg-gray-600 hover:text-white rounded-md px-3 py-2 mr-4"
             to="/login"
           >
             Login
