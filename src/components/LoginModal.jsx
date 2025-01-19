@@ -1,8 +1,35 @@
 import React, { useState } from "react";
 import { MdClose } from "react-icons/md";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  updateUserName,
+  updateUserEmail,
+  setUserLoginStatus,
+} from "../features/userSlice";
 
 const LoginModal = ({ toggleLoginModal }) => {
   const [isRegisterView, setIsRegisterView] = useState(false);
+  const [userNameInput, setUserNameInput] = useState("Test");
+  const [userEmailInput, setUserEmailInput] = useState("");
+  const [userPasswordInput, setUserPasswordInput] = useState("");
+
+  const dispatch = useDispatch();
+
+  const handleRegisterSubmit = (e) => {
+    e.preventDefault();
+    dispatch(updateUserName(userNameInput));
+    dispatch(updateUserEmail(userEmailInput));
+    dispatch(setUserLoginStatus(true));
+    toggleLoginModal();
+  };
+
+  const handleLoginSubmit = (e) => {
+    e.preventDefault();
+    dispatch(updateUserName(userNameInput));
+    dispatch(updateUserEmail(userEmailInput));
+    dispatch(setUserLoginStatus(true));
+    toggleLoginModal();
+  };
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center">
@@ -18,7 +45,7 @@ const LoginModal = ({ toggleLoginModal }) => {
             <h3 className="text-2xl font-bold mb-6 text-gray-800">
               Create an Account
             </h3>
-            <form>
+            <form onSubmit={handleRegisterSubmit}>
               <div className="mb-4">
                 <label className="block text-gray-700 mb-2" htmlFor="name">
                   Name
@@ -28,6 +55,8 @@ const LoginModal = ({ toggleLoginModal }) => {
                   id="name"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   placeholder="Enter your name"
+                  value={userNameInput}
+                  onChange={(e) => setUserNameInput(e.target.value)}
                 />
               </div>
               <div className="mb-4">
@@ -39,6 +68,8 @@ const LoginModal = ({ toggleLoginModal }) => {
                   id="email"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   placeholder="Enter your email"
+                  value={userEmailInput}
+                  onChange={(e) => setUserEmailInput(e.target.value)}
                 />
               </div>
               <div className="mb-6">
@@ -50,6 +81,8 @@ const LoginModal = ({ toggleLoginModal }) => {
                   id="password"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   placeholder="Create a password"
+                  value={userPasswordInput}
+                  onChange={(e) => setUserPasswordInput(e.target.value)}
                 />
               </div>
               <button
@@ -74,7 +107,7 @@ const LoginModal = ({ toggleLoginModal }) => {
             <h3 className="text-2xl font-bold mb-6 text-gray-800">
               Welcome Back!
             </h3>
-            <form>
+            <form onSubmit={handleLoginSubmit}>
               <div className="mb-4">
                 <label className="block text-gray-700 mb-2" htmlFor="email">
                   Email Address
@@ -84,6 +117,8 @@ const LoginModal = ({ toggleLoginModal }) => {
                   id="email"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   placeholder="Enter your email"
+                  value={userEmailInput}
+                  onChange={(e) => setUserEmailInput(e.target.value)}
                 />
               </div>
               <div className="mb-6">
@@ -95,6 +130,8 @@ const LoginModal = ({ toggleLoginModal }) => {
                   id="password"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   placeholder="Enter your password"
+                  value={userPasswordInput}
+                  onChange={(e) => setUserPasswordInput(e.target.value)}
                 />
               </div>
               <div className="flex justify-end items-center mb-4">

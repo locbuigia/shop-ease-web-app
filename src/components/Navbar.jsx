@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { setUserLoginStatus } from "../features/userSlice";
+import { FaRegUser } from "react-icons/fa";
 
 const Navbar = ({ isLoginModalOpen, toggleLoginModal }) => {
+  const isUserLoggedIn = useSelector((state) => state.user.isLoggedIn);
+  const userName = useSelector((state) => state.user.userName);
+  const dispatch = useDispatch();
   const [showNavBar, setShowNavBar] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
@@ -33,21 +39,34 @@ const Navbar = ({ isLoginModalOpen, toggleLoginModal }) => {
           <h1 className="text-white text-4xl font-thin">Shop</h1>
           <h1 className="text-white text-4xl font-bold">Ease</h1>
         </NavLink>
-        <nav className="text-white font-thin">
+        <nav className="text-white font-thin flex">
           <NavLink
             disabled={!showNavBar}
-            className="text-white hover:bg-gray-600 hover:text-white rounded-md px-3 py-2 mr-4"
+            className="text-white hover:bg-gray-600 hover:text-white rounded-md px-3 py-2 mr-4 font-semibold"
             to="/products"
           >
             Products
           </NavLink>
-          <NavLink
-            disabled={!showNavBar}
-            className="text-white hover:bg-gray-600 hover:text-white rounded-md px-3 py-2 mr-4"
-            onClick={toggleLoginModal}
-          >
-            Login
-          </NavLink>
+          {!isUserLoggedIn ? (
+            <NavLink
+              disabled={!showNavBar}
+              className="text-white hover:bg-gray-600 hover:text-white rounded-md px-3 py-2 mr-4"
+              onClick={toggleLoginModal}
+            >
+              <div className="flex justify-center items-center">
+                <FaRegUser size={12} className="mr-1" />
+                Login
+              </div>
+            </NavLink>
+          ) : (
+            <NavLink
+              disabled={!showNavBar}
+              className="text-white hover:bg-gray-600 hover:text-white rounded-md px-3 py-2 mr-4"
+              onClick={() => dispatch(setUserLoginStatus(false))}
+            >
+              {userName}
+            </NavLink>
+          )}
         </nav>
       </div>
     </header>
