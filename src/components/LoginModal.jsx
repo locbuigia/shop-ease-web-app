@@ -5,11 +5,15 @@ import {
   updateUserName,
   updateUserEmail,
   setUserLoginStatus,
+  addNewRegisterUser,
 } from "../features/userSlice";
+import { setShowLoginModal } from "../features/appSlice";
+import { toast } from "react-toastify";
 
-const LoginModal = ({ toggleLoginModal }) => {
+const LoginModal = () => {
+  const registeredUsers = useSelector((state) => state.user.registeredUsers);
   const [isRegisterView, setIsRegisterView] = useState(false);
-  const [userNameInput, setUserNameInput] = useState("Test");
+  const [userNameInput, setUserNameInput] = useState("");
   const [userEmailInput, setUserEmailInput] = useState("");
   const [userPasswordInput, setUserPasswordInput] = useState("");
 
@@ -17,25 +21,54 @@ const LoginModal = ({ toggleLoginModal }) => {
 
   const handleRegisterSubmit = (e) => {
     e.preventDefault();
+
+    const isUserFound = registeredUsers.find(
+      (user) => user.userEmail === userEmailInput
+    );
+
+    if (isUserFound) {
+      toast.error("This Email has been used already!");
+      return;
+    }
+
+    const newUser = {
+      userName: userNameInput,
+      userEmail: userEmailInput,
+      userPassword: userPasswordInput,
+    };
+
+    dispatch(addNewRegisterUser(newUser));
+
     dispatch(updateUserName(userNameInput));
     dispatch(updateUserEmail(userEmailInput));
     dispatch(setUserLoginStatus(true));
-    toggleLoginModal();
+    dispatch(setShowLoginModal(false));
   };
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-    dispatch(updateUserName(userNameInput));
-    dispatch(updateUserEmail(userEmailInput));
-    dispatch(setUserLoginStatus(true));
-    toggleLoginModal();
+    const foundUser = registeredUsers.find(
+      (user) =>
+        user.userEmail === userEmailInput &&
+        user.userPassword === userPasswordInput
+    );
+
+    if (foundUser) {
+      dispatch(updateUserName(foundUser.userName));
+      dispatch(updateUserEmail(foundUser.userEmail));
+      dispatch(setUserLoginStatus(true));
+      dispatch(setShowLoginModal(false));
+      toast.success(`Welcome back, ${foundUser.userName}!`);
+    } else {
+      toast.error("Invalid credentials!");
+    }
   };
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center">
       <div className="bg-white rounded-lg p-8 w-96 shadow-2xl relative">
         <button
-          onClick={toggleLoginModal}
+          onClick={() => dispatch(setShowLoginModal(false))}
           className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 focus:outline-none"
         >
           <MdClose size={30} />

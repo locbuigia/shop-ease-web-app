@@ -3,7 +3,7 @@ import backgroundImg from "../assets/images/about-us-background.jpg";
 
 const AboutUs = () => {
   return (
-    <section className="relative w-full">
+    <div className="relative w-full">
       <img className="w-full" src={backgroundImg} />
       <div className="absolute bottom-0 h-full flex w-full md:w-1/2 items-center justify-center bg-black bg-opacity-70 min-w-60 font-sans">
         <div className="text-center leading-loose px-8">
@@ -19,7 +19,7 @@ const AboutUs = () => {
         </div>
       </div>
       <h2></h2>
-    </section>
+    </div>
   );
 };
 
