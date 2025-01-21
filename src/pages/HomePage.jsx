@@ -6,7 +6,7 @@ import ProductType from "../components/ProductType";
 
 const HomePage = () => {
   return (
-    <div>
+    <div className="w-full h-full">
       <Hero />
       <ProductType />
       <Favorites />

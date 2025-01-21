@@ -79,8 +79,8 @@ const ProductFilter = () => {
   };
 
   return (
-    <div className="text-white mx-9 pt-5 leading-loose tracking-wide font-thin">
-      <div className="flex font-thin text-base mb-10 items-center">
+    <div className="sm:block text-sm sm:text-base text-white mx-9 pt-5 leading-loose tracking-wide font-thin">
+      <div className="flex font-thin mb-10 items-center">
         <button onClick={() => navigate("/")}>
           <h1 className="mr-2 hover:text-gray-400">Home</h1>
         </button>
@@ -126,10 +126,9 @@ const ProductFilter = () => {
       <h1 className="font-bold mt-16">Filter by</h1>
       <p className="text-gray-500">___________________</p>
       <h1>Price</h1>
-      <div>
+      <div className="mt-4 max-w-44">
         <RangeSlider
           id="price-range-slider"
-          className="mt-4"
           rangeSlideDisabled={true}
           min={minPriceRange}
           max={maxPriceRange}

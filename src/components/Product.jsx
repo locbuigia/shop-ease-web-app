@@ -4,7 +4,7 @@ const Product = ({ item }) => {
   return (
     <div
       key={item.id}
-      className="flex flex-col justify-center items-center w-96 h-96 hover:scale-110 transition-transform duration-300 my-12"
+      className="flex flex-col justify-center items-center w-96 h-96 hover:scale-110 duration-300 my-12"
     >
       <img className="p-12" src={item.image} />
       <h1 className="text-sm md:text-2xl">{item.name.toUpperCase()}</h1>

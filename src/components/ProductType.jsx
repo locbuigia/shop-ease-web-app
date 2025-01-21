@@ -27,7 +27,7 @@ const ProductType = () => {
         onClick={() => handleOnClick(BAG_TYPE_BACKPACK)}
         className="relative w-full h-full"
       >
-        <img className="w-full h-[42rem]" src={backpackImg} />
+        <img className="w-full h-[20rem] md:h-[42rem]" src={backpackImg} />
         <div className="absolute flex justify-center items-center bottom-0 w-full h-full text-[0px] hover:text-3xl hover:bg-black hover:bg-opacity-60 duration-500">
           <h1>BACKPACK</h1>
         </div>
@@ -37,7 +37,7 @@ const ProductType = () => {
         onClick={() => handleOnClick(BAG_TYPE_DUFFLE)}
         className="relative w-full h-full"
       >
-        <img className="w-full h-[42rem]" src={duffleImg} />
+        <img className="w-full h-[20rem] md:h-[42rem]" src={duffleImg} />
         <div className="absolute flex justify-center items-center bottom-0 w-full h-full text-[0px] hover:text-3xl hover:bg-black hover:bg-opacity-60 duration-500">
           DUFFLE
         </div>
@@ -47,7 +47,7 @@ const ProductType = () => {
         onClick={() => handleOnClick(BAG_TYPE_TRAVEL)}
         className="relative w-full h-full"
       >
-        <img className="w-full h-[42rem]" src={travelImg} />
+        <img className="w-full h-[20rem] md:h-[42rem]" src={travelImg} />
         <div className="absolute flex justify-center items-center bottom-0 w-full h-full text-[0px] hover:text-3xl hover:bg-black hover:bg-opacity-60 duration-500">
           TRAVEL
         </div>

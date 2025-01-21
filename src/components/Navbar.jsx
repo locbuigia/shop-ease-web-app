@@ -59,7 +59,7 @@ const Navbar = () => {
 
   return (
     <header
-      className={`bg-zinc-800 bg-opacity-70 py-2 px-4 fixed w-full top-0 z-10 transition-transform duration-300 ${
+      className={`bg-zinc-800 bg-opacity-70 py-2 px-0 sm:px-2 md:px-4 fixed w-full top-0 z-10 transition-transform duration-300 ${
         showNavBar && !showLoginModal ? "translate-y-0" : "-translate-y-full"
       }`}
     >
@@ -71,7 +71,7 @@ const Navbar = () => {
           <h1 className="text-gray-300">Shop</h1>
           <h1 className="font-bold">Ease</h1>
         </NavLink>
-        <nav className="font-thin flex">
+        <nav className="font-thin flex  invisible sm:visible">
           <NavLink
             className={linkClass}
             to="/products"
@@ -85,7 +85,7 @@ const Navbar = () => {
           </NavLink>
           {!isUserLoggedIn ? (
             <NavLink
-              className="text-gray-300 hover:bg-gray-600 hover:text-white rounded-md px-3 py-2 mr-4"
+              className="text-gray-300 hover:bg-gray-600 hover:text-white rounded-md px-3 py-2 mr-4 invisible sm:visible"
               onClick={() => dispatch(setShowLoginModal(!showLoginModal))}
             >
               <div className="flex justify-center items-center ">
@@ -96,7 +96,7 @@ const Navbar = () => {
           ) : (
             <NavLink
               disabled={!showNavBar}
-              className="text-gray-300 hover:bg-gray-600 hover:text-white rounded-md px-3 py-2 mr-4"
+              className="text-gray-300 hover:bg-gray-600 hover:text-white rounded-md px-3 py-2 mr-4 invisible sm:visible"
               onClick={handleSignOut}
             >
               <div className="flex justify-center items-center ">
