@@ -79,7 +79,7 @@ const ProductFilter = () => {
   };
 
   return (
-    <div className="text-white mx-9 pt-5 leading-loose tracking-wide">
+    <div className="text-white mx-9 pt-5 leading-loose tracking-wide font-thin">
       <div className="flex font-thin text-base mb-10 items-center">
         <button onClick={() => navigate("/")}>
           <h1 className="mr-2 hover:text-gray-400">Home</h1>
@@ -87,7 +87,7 @@ const ProductFilter = () => {
         <FaChevronRight className="mr-2" />
         <h1>Products</h1>
       </div>
-      <h1 className="font-semibold">Browse by</h1>
+      <h1 className="font-bold">Browse by</h1>
       <p className="text-gray-500">___________________</p>
       <div className="flex flex-col items-start">
         <button
@@ -123,7 +123,7 @@ const ProductFilter = () => {
           Travel bags
         </button>
       </div>
-      <h1 className="font-semibold mt-16">Filter by</h1>
+      <h1 className="font-bold mt-16">Filter by</h1>
       <p className="text-gray-500">___________________</p>
       <h1>Price</h1>
       <div>

@@ -21,7 +21,7 @@ const ProductType = () => {
   };
 
   return (
-    <div className="w-full h-full grid grid-cols-3 font-serif text-white tracking-widest">
+    <div className="w-full h-full grid grid-cols-3 text-white tracking-widest">
       <a
         href="#top"
         onClick={() => handleOnClick(BAG_TYPE_BACKPACK)}

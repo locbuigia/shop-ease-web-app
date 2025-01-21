@@ -10,7 +10,7 @@ const ProductsPage = () => {
   return (
     <>
       <a name="top" />
-      <div className="flex bg-black font-thin w-full py-20 font-serif">
+      <div className="flex bg-black w-full py-20 ">
         <ProductFilter />
         <div className="text-white flex flex-col w-10/12 mt-24">
           <h1 className="text-5xl mb-8 ml-20">All Products</h1>

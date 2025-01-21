@@ -4,7 +4,7 @@ import { FaArrowUp, FaGithub, FaLinkedin } from "react-icons/fa";
 const Footer = () => {
   return (
     <>
-      <div className="bg-zinc-800 text-white font-thin font-sans w-full text-center py-4">
+      <div className="bg-zinc-800 text-white  w-full text-center py-4">
         <div className="lg:mx-64 md:mx-24 sm:mx-8">
           <div className="flex justify-center">
             <a href="#top">

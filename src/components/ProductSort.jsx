@@ -20,7 +20,9 @@ const ProductSort = () => {
     const items = [...displayedItems];
     switch (e.target.value) {
       case PRODUCT_SORT_TYPE_RECOMMENDED:
-        dispatch(setProducts(items));
+        dispatch(
+          setProducts(items.sort((a, b) => a.name.localeCompare(b.name)))
+        );
         break;
       case PRODUCT_SORT_TYPE_PRICE_LOW_TO_HIGH:
         dispatch(setProducts(items.sort((a, b) => a.price - b.price)));
@@ -42,9 +44,9 @@ const ProductSort = () => {
   };
 
   return (
-    <div className="flex mx-20 justify-between">
+    <div className="flex mx-20 justify-between items-center font-thin">
       <h1>{displayedItems.length} products</h1>
-      <div className="flex items-center font-serif font-thin hover:text-gray-400">
+      <div className="flex items-center hover:text-gray-400">
         <h1>Sort by: </h1>
         <select
           id="filter"

@@ -47,8 +47,8 @@ const Navbar = () => {
 
   const linkClass = ({ isActive }) =>
     isActive
-      ? "bg-gray-600 text-white rounded-md px-3 py-2 mr-4 font-thin"
-      : "text-gray-300 hover:bg-gray-600 hover:text-white rounded-md px-3 py-2 mr-4 font-thin";
+      ? "bg-gray-600 text-white rounded-md px-3 py-2 mr-4"
+      : "text-gray-300 hover:bg-gray-600 hover:text-white rounded-md px-3 py-2 mr-4";
 
   const handleSignOut = () => {
     dispatch(updateUserName(""));
@@ -59,14 +59,17 @@ const Navbar = () => {
 
   return (
     <header
-      className={`font-serif bg-zinc-800 bg-opacity-70 py-2 px-4 fixed w-full top-0 z-10 transition-transform duration-300 ${
+      className={`bg-zinc-800 bg-opacity-70 py-2 px-4 fixed w-full top-0 z-10 transition-transform duration-300 ${
         showNavBar && !showLoginModal ? "translate-y-0" : "-translate-y-full"
       }`}
     >
       <div className="flex justify-between items-center w-full">
-        <NavLink to="/" className="flex mx-5 my-1 text-white">
-          <h1 className="text-4xl font-thin">Shop</h1>
-          <h1 className="text-4xl font-bold">Ease</h1>
+        <NavLink
+          to="/"
+          className="flex mx-5 my-1 text-white font-serif text-5xl"
+        >
+          <h1 className="text-gray-300">Shop</h1>
+          <h1 className="font-bold">Ease</h1>
         </NavLink>
         <nav className="font-thin flex">
           <NavLink
@@ -85,7 +88,7 @@ const Navbar = () => {
               className="text-gray-300 hover:bg-gray-600 hover:text-white rounded-md px-3 py-2 mr-4"
               onClick={() => dispatch(setShowLoginModal(!showLoginModal))}
             >
-              <div className="flex justify-center items-center  font-thin">
+              <div className="flex justify-center items-center ">
                 <FaRegUser size={12} className="mr-1" />
                 Login
               </div>
@@ -96,7 +99,7 @@ const Navbar = () => {
               className="text-gray-300 hover:bg-gray-600 hover:text-white rounded-md px-3 py-2 mr-4"
               onClick={handleSignOut}
             >
-              <div className="flex justify-center items-center  font-thin">
+              <div className="flex justify-center items-center ">
                 <FaRegUser size={12} className="mr-1" />
                 {userName}
               </div>

@@ -6,12 +6,12 @@ const Hero = () => {
   return (
     <section className="w-full">
       <img className="w-full h-screen" src={backgroundImg} />
-      <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 font-sans">
+      <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 ">
         <div className="text-center leading-loose">
           <h1 className="text-white text-xl md:text-4xl font-semibold">
             Your one-stop shop for bags and backpacks!
           </h1>
-          <h1 className="text-white text-lg md:text-3xl font-thin mt-4">
+          <h1 className="text-white text-lg md:text-3xl mt-4 font-thin">
             Discover the Best Deals Today!
           </h1>
           <a href="#favorites">
