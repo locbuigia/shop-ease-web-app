@@ -5,14 +5,16 @@ import { useSelector } from "react-redux";
 import "react-toastify/ReactToastify.css";
 import Footer from "../components/Footer";
 import LoginModal from "../components/LoginModal";
+import Navbar from "../components/Navbar";
 
 const MainLayout = () => {
   const showLoginModal = useSelector((state) => state.app.showLoginModal);
   return (
     <>
       <Outlet />
-      {showLoginModal && <LoginModal />}
+      <Navbar />
       <Footer />
+      {showLoginModal && <LoginModal />}
       <ToastContainer
         position="top-center"
         autoClose={2500}

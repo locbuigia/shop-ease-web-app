@@ -1,16 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import {
   setUserLoginStatus,
   updateUserEmail,
   updateUserName,
 } from "../features/userSlice";
-import { setShowLoginModal } from "../features/appSlice";
-import { FaRegUser } from "react-icons/fa";
+import {
+  setProductSortByType,
+  setProductType,
+  setShowLoginModal,
+} from "../features/appSlice";
+import { BAG_TYPE_ALL } from "../constants";
 import { toast } from "react-toastify";
+import { FaRegUser } from "react-icons/fa";
+
+import items from "../data/products.json";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const showLoginModal = useSelector((state) => state.app.showLoginModal);
   const isUserLoggedIn = useSelector((state) => state.user.isLoggedIn);
   const userName = useSelector((state) => state.user.userName);
@@ -51,7 +59,7 @@ const Navbar = () => {
 
   return (
     <header
-      className={`font-serif bg-gray-800 bg-opacity-50 py-2 px-4 fixed w-full top-0 z-10 transition-transform duration-300 ${
+      className={`font-serif bg-zinc-800 bg-opacity-70 py-2 px-4 fixed w-full top-0 z-10 transition-transform duration-300 ${
         showNavBar && !showLoginModal ? "translate-y-0" : "-translate-y-full"
       }`}
     >
@@ -61,7 +69,15 @@ const Navbar = () => {
           <h1 className="text-4xl font-bold">Ease</h1>
         </NavLink>
         <nav className="font-thin flex">
-          <NavLink className={linkClass} to="/products">
+          <NavLink
+            className={linkClass}
+            to="/products"
+            onClick={() => {
+              dispatch(setProductType(BAG_TYPE_ALL));
+              dispatch(setProductSortByType(PRODUCT_SORT_TYPE_RECOMMENDED));
+              dispatch(setProducts(items));
+            }}
+          >
             Products
           </NavLink>
           {!isUserLoggedIn ? (
