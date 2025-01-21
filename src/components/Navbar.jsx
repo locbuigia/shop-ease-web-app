@@ -37,6 +37,11 @@ const Navbar = () => {
     };
   }, [lastScrollY]);
 
+  const linkClass = ({ isActive }) =>
+    isActive
+      ? "bg-gray-600 text-white rounded-md px-3 py-2 mr-4 font-thin"
+      : "text-gray-300 hover:bg-gray-600 hover:text-white rounded-md px-3 py-2 mr-4 font-thin";
+
   const handleSignOut = () => {
     dispatch(updateUserName(""));
     dispatch(updateUserEmail(""));
@@ -56,16 +61,11 @@ const Navbar = () => {
           <h1 className="text-4xl font-bold">Ease</h1>
         </NavLink>
         <nav className="font-thin flex">
-          <NavLink
-            disabled={!showNavBar}
-            className="text-gray-300 hover:bg-gray-600 hover:text-white rounded-md px-3 py-2 mr-4 font-thin"
-            to="/products"
-          >
+          <NavLink className={linkClass} to="/products">
             Products
           </NavLink>
           {!isUserLoggedIn ? (
             <NavLink
-              disabled={!showNavBar}
               className="text-gray-300 hover:bg-gray-600 hover:text-white rounded-md px-3 py-2 mr-4"
               onClick={() => dispatch(setShowLoginModal(!showLoginModal))}
             >

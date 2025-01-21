@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { FaChevronRight } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../components/Navbar";
 import Product from "../components/Product";
+import RangeSlider from "react-range-slider-input";
 import items from "../data/products.json";
-import "react-range-slider-input/dist/style.css";
-import "../styles.css";
 
 import {
   BAG_TYPE_ALL,
@@ -16,7 +18,7 @@ import {
   PRODUCT_SORT_TYPE_PRICE_LOW_TO_HIGH,
   PRODUCT_SORT_TYPE_RECOMMENDED,
 } from "../constants";
-import { useDispatch, useSelector } from "react-redux";
+
 import {
   setProducts,
   setProductType,
@@ -24,13 +26,13 @@ import {
   setMinPriceRange,
   setMaxPriceRange,
 } from "../features/appSlice";
-import RangeSlider from "react-range-slider-input";
 
-import { store } from "../store";
-import { FaChevronRight } from "react-icons/fa";
+import "react-range-slider-input/dist/style.css";
+import "../styles.css";
 
 const ProductsPage = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const displayedItems = useSelector((state) => state.app.products);
   const productType = useSelector((state) => state.app.productType);
   const productSortByType = useSelector((state) => state.app.productSortByType);
@@ -42,7 +44,7 @@ const ProductsPage = () => {
   ]);
 
   useEffect(() => {
-    handleProductTypeChange(BAG_TYPE_ALL);
+    handleProductTypeChange(productType);
   }, []);
 
   const handleProductTypeChange = (type) => {
@@ -108,10 +110,11 @@ const ProductsPage = () => {
   return (
     <>
       <Navbar />
+      <a name="top" />
       <div className="flex bg-black font-thin w-full py-20 font-serif">
         <div className="text-white mx-9 pt-5 leading-loose tracking-wide">
           <div className="flex font-thin text-base mb-10 items-center">
-            <a href="/">
+            <a onClick={() => navigate("/")}>
               <h1 className="mr-2 hover:text-gray-400">Home</h1>
             </a>
             <FaChevronRight className="mr-2" />
