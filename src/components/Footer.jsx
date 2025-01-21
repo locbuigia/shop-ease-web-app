@@ -5,7 +5,7 @@ import logo from "../assets/images/loc-logo.jpeg";
 const Footer = () => {
   return (
     <>
-      <div className="bg-gray-800 text-white font-thin font-sans w-full text-center py-4">
+      <div className="bg-gray-800 bg-opacity-50 text-white font-thin font-sans w-full text-center py-4">
         <div className="lg:mx-64 md:mx-24 sm:mx-8">
           <div className="flex justify-center">
             <a href="#top">

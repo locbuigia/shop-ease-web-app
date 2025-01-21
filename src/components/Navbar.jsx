@@ -46,7 +46,7 @@ const Navbar = () => {
 
   return (
     <header
-      className={`font-serif bg-black bg-opacity-70 py-2 px-4 fixed w-full top-0 z-10 transition-transform duration-300 ${
+      className={`font-serif bg-gray-800 bg-opacity-50 py-2 px-4 fixed w-full top-0 z-10 transition-transform duration-300 ${
         showNavBar && !showLoginModal ? "translate-y-0" : "-translate-y-full"
       }`}
     >

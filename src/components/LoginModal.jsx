@@ -43,6 +43,7 @@ const LoginModal = () => {
     dispatch(updateUserEmail(userEmailInput));
     dispatch(setUserLoginStatus(true));
     dispatch(setShowLoginModal(false));
+    toast.success(`Welcome to ShopEase, ${userNameInput}!`);
   };
 
   const handleLoginSubmit = (e) => {

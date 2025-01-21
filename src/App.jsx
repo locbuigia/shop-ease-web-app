@@ -1,11 +1,7 @@
 // Import necessary libraries
 import React from "react";
-import {
-  Route,
-  createBrowserRouter,
-  createRoutesFromElements,
-  RouterProvider,
-} from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 import "./index.css";
 import HomePage from "./pages/HomePage";
 import MainLayout from "./layouts/MainLayout";
@@ -13,17 +9,60 @@ import NotFoundPage from "./pages/NotFoundPage";
 import ProductsPage from "./pages/ProductsPage";
 
 const App = () => {
-  const router = createBrowserRouter(
-    createRoutesFromElements(
-      <Route path="/" element={<MainLayout />}>
-        <Route index element={<HomePage />} />
-        <Route path="/products" element={<ProductsPage />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Route>
-    )
-  );
+  const location = useLocation();
 
-  return <RouterProvider router={router} />;
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route
+          path="/"
+          element={
+            <PageWrapper>
+              <MainLayout />
+            </PageWrapper>
+          }
+        >
+          <Route
+            index
+            element={
+              <PageWrapper>
+                <HomePage />
+              </PageWrapper>
+            }
+          />
+          <Route
+            path="/products"
+            element={
+              <PageWrapper>
+                <ProductsPage />
+              </PageWrapper>
+            }
+          />
+          <Route
+            path="*"
+            element={
+              <PageWrapper>
+                <NotFoundPage />
+              </PageWrapper>
+            }
+          />
+        </Route>
+      </Routes>
+    </AnimatePresence>
+  );
+};
+
+const PageWrapper = ({ children }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, backgroundColor: "black" }}
+      animate={{ opacity: 1, backgroundColor: "black" }}
+      exit={{ opacity: 0, y: -20, backgroundColor: "black" }}
+      transition={{ duration: 0.5 }}
+    >
+      {children}
+    </motion.div>
+  );
 };
 
 export default App;
