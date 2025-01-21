@@ -96,10 +96,13 @@ const ProductsPage = () => {
   };
 
   const handlePriceRangeDragEnd = () => {
-    const items = [...displayedItems];
+    const itemList =
+      productType === BAG_TYPE_ALL
+        ? items
+        : items.filter((item) => item.type === productType);
     dispatch(
       setProducts(
-        items.filter(
+        itemList.filter(
           (item) =>
             item.price >= priceRangeValue[0] && item.price <= priceRangeValue[1]
         )
