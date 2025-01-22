@@ -6,6 +6,7 @@ const initialState = {
   products: products,
   isLoading: false,
   showLoginModal: false,
+  showCartModal: false,
   productType: BAG_TYPE_ALL,
   productSortByType: PRODUCT_SORT_TYPE_RECOMMENDED,
   minPriceRange: 0,
@@ -21,6 +22,9 @@ export const appSlice = createSlice({
     },
     setShowLoginModal: (state, action) => {
       state.showLoginModal = action.payload;
+    },
+    setShowCartModal: (state, action) => {
+      state.showCartModal = action.payload;
     },
     setMinPriceRange: (state, action) => {
       state.minPriceRange = action.payload;
@@ -43,6 +47,7 @@ export const appSlice = createSlice({
 export const {
   setIsLoading,
   setShowLoginModal,
+  setShowCartModal,
   setMinPriceRange,
   setMaxPriceRange,
   setProductType,

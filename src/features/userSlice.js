@@ -11,6 +11,7 @@ const initialState = {
   isLoggedIn: false,
   userName: "",
   userEmail: "",
+  itemsInUserCart: [],
 };
 
 export const userSlice = createSlice({
@@ -30,6 +31,23 @@ export const userSlice = createSlice({
     addNewRegisterUser: (state, action) => {
       state.registeredUsers = [...state.registeredUsers, action.payload];
     },
+    addItemToUserCart: (state, action) => {
+      state.itemsInUserCart.push(action.payload);
+    },
+    updateItemQuantityInUserCart: (state, action) => {
+      state.itemsInUserCart = state.itemsInUserCart.map((item) => {
+        if (item.id === action.payload.id) {
+          return { ...item, quantity: action.payload.quantity };
+        } else {
+          return item;
+        }
+      });
+    },
+    removeItemFromUserCart: (state, action) => {
+      state.itemsInUserCart = state.itemsInUserCart.filter(
+        (item) => item.id !== action.payload.id
+      );
+    },
   },
 });
 
@@ -38,6 +56,9 @@ export const {
   updateUserName,
   updateUserEmail,
   addNewRegisterUser,
+  addItemToUserCart,
+  updateItemQuantityInUserCart,
+  removeItemFromUserCart,
 } = userSlice.actions;
 
 export default userSlice.reducer;
