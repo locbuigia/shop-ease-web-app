@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { FaChevronRight } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import RangeSlider from "react-range-slider-input";
@@ -32,14 +32,20 @@ const ProductFilter = () => {
   const minPriceRange = useSelector((state) => state.app.minPriceRange);
   const maxPriceRange = useSelector((state) => state.app.maxPriceRange);
 
+  const [searchParams] = useSearchParams();
+
   const [priceRangeValue, setPriceRangeValue] = useState([
     minPriceRange,
     maxPriceRange,
   ]);
 
   useEffect(() => {
-    handleProductTypeChange(productType);
-  }, []);
+    if (searchParams.get("type")) {
+      handleProductTypeChange(searchParams.get("type"));
+    } else {
+      handleProductTypeChange(BAG_TYPE_ALL);
+    }
+  }, [searchParams]);
 
   const handleProductTypeChange = (type) => {
     let itemsByType =

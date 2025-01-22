@@ -8,16 +8,12 @@ import {
   BAG_TYPE_TRAVEL,
 } from "../constants";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { setProductType } from "../features/appSlice";
 
 const ProductType = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const handleOnClick = (type) => {
-    dispatch(setProductType(type));
-    navigate("/products");
+    navigate(`/products?type=${type}`);
   };
 
   return (
