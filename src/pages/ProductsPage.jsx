@@ -10,8 +10,8 @@ const ProductsPage = () => {
   return (
     <div className="sm:flex bg-black w-full py-20">
       <ProductFilter />
-      <div className="w-full text-white flex flex-col mt-4 sm:mt-24 mx-4">
-        <h1 className="text-2xl md:text-5xl my-8 md:my-4 ml-5 md:ml-20">
+      <div className="w-full text-white flex flex-col mt-4 sm:mt-24 px-4">
+        <h1 className="text-2xl md:text-5xl my-8 md:my-4 md:ml-20 px-5">
           All Products
         </h1>
         <ProductSort />

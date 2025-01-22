@@ -7,6 +7,7 @@ import Footer from "../components/Footer";
 import LoginModal from "../components/LoginModal";
 import Navbar from "../components/Navbar";
 import CartModal from "../components/CartModal";
+import SideMenu from "../components/SideMenu";
 
 const MainLayout = () => {
   const showLoginModal = useSelector((state) => state.app.showLoginModal);
@@ -32,7 +33,7 @@ const MainLayout = () => {
       <Navbar />
       <Footer />
       <CartModal />
-      {/* {showCartModal && <CartModal />} */}
+      <SideMenu />
       {showLoginModal && <LoginModal />}
       <ToastContainer
         position="top-center"

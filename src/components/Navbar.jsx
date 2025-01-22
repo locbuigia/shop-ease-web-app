@@ -6,10 +6,15 @@ import {
   updateUserEmail,
   updateUserName,
 } from "../features/userSlice";
-import { setShowCartModal, setShowLoginModal } from "../features/appSlice";
+import {
+  setShowCartModal,
+  setShowLoginModal,
+  setShowSideMenu,
+} from "../features/appSlice";
 import { toast } from "react-toastify";
 import { FaRegUser } from "react-icons/fa";
 import { LiaShoppingBagSolid } from "react-icons/lia";
+import { IoMenuSharp } from "react-icons/io5";
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -46,14 +51,19 @@ const Navbar = () => {
     toast.success("You have signed out successfully!");
   };
 
+  const handleMenuClick = () => {
+    dispatch(setShowSideMenu(true));
+  };
+
   return (
     <header
-      className={`bg-zinc-800 bg-opacity-70 py-2 px-0 sm:px-2 md:px-4 fixed w-full top-0 z-10 transition-transform duration-300 ${
-        showNavBar && !showLoginModal ? "translate-y-0" : "-translate-y-full"
-      }`}
+      className={`bg-zinc-800 bg-opacity-70 py-2 px-0 sm:px-2 md:px-4 fixed w-full top-0 z-10`}
     >
       <div className="flex justify-between items-center w-full px-5">
-        <NavLink to="/" className="flex my-1 text-white font-serif text-5xl">
+        <NavLink
+          to="/"
+          className="flex my-1 text-white font-serif text-3xl sm:text-5xl"
+        >
           <h1 className="text-gray-300">Shop</h1>
           <h1 className="font-bold">Ease</h1>
         </NavLink>
@@ -87,12 +97,16 @@ const Navbar = () => {
             </NavLink>
           )}
           <NavLink onClick={() => dispatch(setShowCartModal(true))}>
-            <div className="flex text-white font-thin hover:scale-125 duration-300">
+            <div className="hidden sm:flex text-white font-thin hover:scale-125 duration-300">
               <LiaShoppingBagSolid size={20} className="mr-1" />
               {itemsInUserCart.length}
             </div>
           </NavLink>
         </nav>
+
+        <button onClick={handleMenuClick} className="sm:hidden text-white">
+          <IoMenuSharp size={26} />
+        </button>
       </div>
     </header>
   );
