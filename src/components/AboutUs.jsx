@@ -10,7 +10,7 @@ const AboutUs = () => {
           <h1 className="text-zinc-300 text-xl md:text-2xl mb-8 font-semibold tracking-widest">
             ABOUT US
           </h1>
-          <h1 className="text-zinc-300 text-sm md:text-lg font-thin tracking-widest">
+          <h1 className="text-zinc-300 text-sm md:text-lg font-light tracking-widest">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut

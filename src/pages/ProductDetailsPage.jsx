@@ -63,7 +63,7 @@ const ProductDetailsPage = () => {
 
   return (
     <div className="bg-black w-full h-full py-20 px-4 md:px-40 text-white leading-loose">
-      <div className="text-sm md:text-base flex w-full font-thin mt-12 items-center">
+      <div className="text-sm md:text-base flex w-full font-light mt-12 items-center">
         <Link to={"/"}>
           <h1 className="mr-2 hover:text-gray-400">Home</h1>
         </Link>
@@ -79,7 +79,7 @@ const ProductDetailsPage = () => {
           <div className="w-[20rem] h-[20rem] md:w-[32rem] md:h-[32rem]">
             <img src={currentItem.image} />
           </div>
-          <p className="md:w-[32rem] font-thin">
+          <p className="md:w-[32rem] font-light">
             This is a product description. Lorem ipsum dolor sit amet,
             consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
             labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
@@ -91,12 +91,12 @@ const ProductDetailsPage = () => {
           <h1 className="text-xl mt-10 md:text-3xl md:mt-0">
             {currentItem.name}
           </h1>
-          <h3 className="font-thin">
+          <h3 className="font-light">
             SKU: {currentItem.id.toString().padStart(4, "0")}
           </h3>
           <h5 className="text-xl font-semibold mt-10">${currentItem.price}</h5>
           <div className="mt-10">
-            <h5 className="font-thin text-sm mb-2">Quantity:</h5>
+            <h5 className="font-light text-sm mb-2">Quantity:</h5>
             <div className="flex items-center w-28 justify-between space-x-2 py-2 border-[1px] border-white bg-white text-black">
               <button
                 onClick={() => handleUpdateItemQty(QUANTITY_REDUCTION)}
@@ -131,7 +131,7 @@ const ProductDetailsPage = () => {
             </button>
             <div className="overflow-hidden">
               <p
-                className={`md:w-[32rem] font-thin duration-300 ${
+                className={`md:w-[32rem] font-light duration-300 ${
                   showProductInfo ? "translate-y-0" : "-translate-y-full"
                 }`}
               >

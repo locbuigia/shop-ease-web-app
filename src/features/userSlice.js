@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 
 const initialState = {
   registeredUsers: [
@@ -33,6 +34,7 @@ export const userSlice = createSlice({
     },
     addItemToUserCart: (state, action) => {
       state.itemsInUserCart.push(action.payload);
+      toast.success("Item added to cart!");
     },
     updateItemQuantityInUserCart: (state, action) => {
       state.itemsInUserCart = state.itemsInUserCart.map((item) => {
