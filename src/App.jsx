@@ -1,5 +1,5 @@
 // Import necessary libraries
-import React from "react";
+import React, { useEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import "./index.css";
@@ -7,13 +7,18 @@ import HomePage from "./pages/HomePage";
 import MainLayout from "./layouts/MainLayout";
 import NotFoundPage from "./pages/NotFoundPage";
 import ProductsPage from "./pages/ProductsPage";
+import ProductDetailsPage from "./pages/ProductDetailsPage";
 
 const App = () => {
-  const location = useLocation();
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   return (
     <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
+      <Routes location={location} key={pathname}>
         <Route
           path="/"
           element={
@@ -39,6 +44,14 @@ const App = () => {
             }
           />
           <Route
+            path="/products/:id"
+            element={
+              <PageWrapper>
+                <ProductDetailsPage />
+              </PageWrapper>
+            }
+          />
+          <Route
             path="*"
             element={
               <PageWrapper>
@@ -57,8 +70,7 @@ const PageWrapper = ({ children }) => {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.8 }}
     >
       {children}
     </motion.div>

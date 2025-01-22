@@ -142,7 +142,7 @@ const CartModal = () => {
                     .toFixed(2)}
                 </p>
               </div>
-              <div className="mt-12 mb-2 flex justify-center">
+              <div className="mt-8 mb-6 flex justify-center">
                 <button className="w-64 border-2 border-black p-2 text-black bg-white hover:bg-black hover:text-white hover:border-white duration-300">
                   Checkout
                 </button>

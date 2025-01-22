@@ -7,20 +7,12 @@ import {
   BAG_TYPE_DUFFLE,
   BAG_TYPE_TRAVEL,
 } from "../constants";
-import { useNavigate } from "react-router-dom";
 
 const ProductType = () => {
-  const navigate = useNavigate();
-
-  const handleOnClick = (type) => {
-    navigate(`/products?type=${type}`);
-  };
-
   return (
     <div className="w-full h-full grid grid-cols-1 sm:grid-cols-3 text-white tracking-widest">
       <a
-        href="#top"
-        onClick={() => handleOnClick(BAG_TYPE_BACKPACK)}
+        href={`/products?type=${BAG_TYPE_BACKPACK}`}
         className="relative w-full h-full"
       >
         <img className="w-full sm:h-full" src={backpackTypeImg} />
@@ -29,8 +21,7 @@ const ProductType = () => {
         </div>
       </a>
       <a
-        href="#top"
-        onClick={() => handleOnClick(BAG_TYPE_DUFFLE)}
+        href={`/products?type=${BAG_TYPE_DUFFLE}`}
         className="relative w-full h-full"
       >
         <img className="w-full sm:h-full" src={duffleTypeImg} />
@@ -39,8 +30,7 @@ const ProductType = () => {
         </div>
       </a>
       <a
-        href="#top"
-        onClick={() => handleOnClick(BAG_TYPE_TRAVEL)}
+        href={`/products?type=${BAG_TYPE_TRAVEL}`}
         className="relative w-full h-full"
       >
         <img className="w-full sm:h-full" src={travelTypeImg} />

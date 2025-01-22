@@ -7,9 +7,9 @@ const Footer = () => {
       <div className="bg-zinc-800 text-white  w-full text-center py-4">
         <div className="lg:mx-64 md:mx-24 sm:mx-8">
           <div className="flex justify-center">
-            <a href="#top">
+            <button onClick={() => window.scrollTo(0, 0)}>
               <FaArrowUp size={24} />
-            </a>
+            </button>
           </div>
           <p className="tracking-wide leading-loose my-2">
             Built by Loc Bui - 2025
