@@ -1,8 +1,8 @@
 import React from "react";
 
-const Divider = ({ width }) => {
+const Divider = () => {
   return (
-    <div className={`${width ? `w-[${width}rem]` : "w-full"} border-b-2`}></div>
+    <div className="w-full border-b-[1px] my-2 sm:my-4 border-gray-500"></div>
   );
 };
 

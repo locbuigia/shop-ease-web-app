@@ -23,6 +23,7 @@ import {
 
 import "react-range-slider-input/dist/style.css";
 import "../styles.css";
+import Divider from "./Divider";
 
 const ProductFilter = () => {
   const dispatch = useDispatch();
@@ -94,7 +95,7 @@ const ProductFilter = () => {
         <h1>Products</h1>
       </div>
       <h1 className="font-bold">Browse by</h1>
-      <p className="text-gray-500">___________________</p>
+      <Divider />
       <div className="flex flex-col items-start">
         <button
           onClick={() => handleProductTypeChange(BAG_TYPE_ALL)}
@@ -130,7 +131,7 @@ const ProductFilter = () => {
         </button>
       </div>
       <h1 className="font-bold mt-16">Filter by</h1>
-      <p className="text-gray-500">___________________</p>
+      <Divider />
       <h1>Price</h1>
       <div className="mt-4 max-w-44">
         <RangeSlider
