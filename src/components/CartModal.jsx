@@ -10,6 +10,7 @@ import {
 } from "../features/userSlice";
 import { QUANTITY_INCREMENT, QUANTITY_REDUCTION } from "../constants";
 import { pluralize } from "../utils";
+import Divider from "./Divider";
 
 const CartModal = () => {
   const dispatch = useDispatch();
@@ -37,7 +38,7 @@ const CartModal = () => {
   };
 
   return (
-    <div className="hidden sm:block">
+    <div className="">
       <div
         className={`inset-0 w-full h-full fixed duration-500 ${
           showCartModal ? "z-40 bg-opacity-30 bg-white" : "-z-50"
@@ -48,7 +49,7 @@ const CartModal = () => {
           showCartModal ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <div className="w-[28rem] h-screen bg-black px-4 py-4 relative flex flex-col justify-between">
+        <div className="w-full sm:w-[28rem] h-screen bg-black px-4 py-4 relative flex flex-col justify-between">
           <button
             onClick={() => dispatch(setShowCartModal(false))}
             className="absolute top-4 right-4 text-white hover:text-gray-600 focus:outline-none"
@@ -67,9 +68,7 @@ const CartModal = () => {
                 )})`}
               </p>
             </div>
-            <p className="text-gray-500">
-              ____________________________________________________
-            </p>
+            <Divider />
             {itemsInUserCart.length === 0 ? (
               <div className="w-full h-full flex justify-center items-center">
                 <p>Your cart is empty.</p>
@@ -79,7 +78,7 @@ const CartModal = () => {
                 {itemsInUserCart.map((item, index) => (
                   <li key={index} className="w-full flex justify-between pr-4">
                     <div className="flex">
-                      <div className="w-32 h-32 mr-4">
+                      <div className="sm:w-32 sm:h-32 mr-4">
                         <img src={item.image} />
                       </div>
                       <div className="space-y-4 w-60">
@@ -87,8 +86,8 @@ const CartModal = () => {
                         <p className="text-sm font-thin">
                           ${item.price.toFixed(2)}
                         </p>
-                        <div className="flex w-full justify-between">
-                          <div className="flex items-center w-28 justify-between space-x-2 border-[1px] border-white">
+                        <div className="sm:flex w-full justify-between">
+                          <div className="flex items-center w-28 justify-between sm:space-x-2 border-[1px] border-white">
                             <button
                               onClick={() =>
                                 handleUpdateItemQty(item, QUANTITY_REDUCTION)
@@ -107,14 +106,16 @@ const CartModal = () => {
                               <LuPlus />
                             </button>
                           </div>
-                          <p>${(item.quantity * item.price).toFixed(2)}</p>
+                          <p className="mt-4 sm:mt-0">
+                            ${(item.quantity * item.price).toFixed(2)}
+                          </p>
                         </div>
                       </div>
                     </div>
                     <div>
                       <button
                         onClick={() => handleRemoveItemFromCart(item)}
-                        className="text-red-500 hover:scale-125 duration-300"
+                        className="text-red-500 hover:scale-125 duration-300 mt-10 sm:mt-0"
                       >
                         <RiDeleteBinLine size={20} />
                       </button>
@@ -127,10 +128,8 @@ const CartModal = () => {
 
           {itemsInUserCart.length > 0 && (
             <div>
-              <p className="text-gray-500">
-                ____________________________________________________
-              </p>
-              <div className="flex justify-between">
+              <Divider />
+              <div className="flex justify-between sm:mt-1">
                 <p className="font-thin">Subtotal:</p>
                 <p className="pr-1">
                   $
@@ -142,7 +141,7 @@ const CartModal = () => {
                     .toFixed(2)}
                 </p>
               </div>
-              <div className="mt-8 mb-6 flex justify-center">
+              <div className="mt-4 sm:mt-8 sm:mb-6 flex justify-center">
                 <button className="w-64 border-2 border-black p-2 text-black bg-white hover:bg-black hover:text-white hover:border-white duration-300">
                   Checkout
                 </button>

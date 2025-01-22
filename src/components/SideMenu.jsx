@@ -1,22 +1,34 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setShowSideMenu } from "../features/appSlice";
+import { setShowCartModal, setShowSideMenu } from "../features/appSlice";
 import { MdClose } from "react-icons/md";
 
-import { store } from "../store";
 import { FaGithub, FaLinkedin, FaRegUser } from "react-icons/fa";
 import Divider from "./Divider";
 import { LiaShoppingBagSolid } from "react-icons/lia";
 import { useNavigate } from "react-router-dom";
+import {
+  SIDE_MENU_CART,
+  SIDE_MENU_LOGIN,
+  SIDE_MENU_PRODUCTS,
+} from "../constants";
 
 const SideMenu = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const showSideMenu = useSelector((state) => state.app.showSideMenu);
+  const itemsInUserCart = useSelector((state) => state.user.itemsInUserCart);
 
-  const handleButtonClick = () => {
+  const handleButtonClick = (type) => {
     dispatch(setShowSideMenu(false));
-    navigate("/products");
+
+    if (type === SIDE_MENU_PRODUCTS) {
+      navigate("/products");
+    } else if (type === SIDE_MENU_LOGIN) {
+      console.log("Handle login");
+    } else if (type === SIDE_MENU_CART) {
+      dispatch(setShowCartModal(true));
+    }
   };
 
   return (
@@ -40,22 +52,28 @@ const SideMenu = () => {
           <div className="w-full">
             <button
               className="w-full flex flex-col items-start mt-14 mb-6"
-              onClick={handleButtonClick}
+              onClick={() => handleButtonClick(SIDE_MENU_PRODUCTS)}
             >
-              <h1 className="text-3xl mb-2">View Products</h1>
+              <h1 className="text-2xl mb-2">View Products</h1>
               <Divider />
             </button>
-            <button className="w-full flex flex-col items-start mt-14 mb-6">
+            <button
+              className="w-full flex flex-col items-start mt-14 mb-6"
+              onClick={() => handleButtonClick(SIDE_MENU_LOGIN)}
+            >
               <div className="flex items-center mb-2">
                 <FaRegUser size={24} className="mr-2" />
-                <h1 className="text-3xl">Login</h1>
+                <h1 className="text-2xl">Login</h1>
               </div>
               <Divider />
             </button>
-            <button className="w-full flex flex-col items-start mt-14 mb-6">
+            <button
+              className="w-full flex flex-col items-start mt-14 mb-6"
+              onClick={() => handleButtonClick(SIDE_MENU_CART)}
+            >
               <div className="flex items-center mb-2">
                 <LiaShoppingBagSolid size={24} className="mr-2" />
-                <h1 className="text-3xl">View Cart</h1>
+                <h1 className="text-2xl">{`View Cart (${itemsInUserCart.length})`}</h1>
               </div>
               <Divider />
             </button>

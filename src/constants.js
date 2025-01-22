@@ -11,3 +11,7 @@ export const PRODUCT_SORT_TYPE_NAME_DESC = "NAME_DESC";
 
 export const QUANTITY_INCREMENT = "INCREMENT";
 export const QUANTITY_REDUCTION = "REDUCTION";
+
+export const SIDE_MENU_PRODUCTS = "PRODUCTS";
+export const SIDE_MENU_LOGIN = "LOGIN";
+export const SIDE_MENU_CART = "CART";
