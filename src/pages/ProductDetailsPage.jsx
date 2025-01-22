@@ -146,7 +146,7 @@ const ProductDetailsPage = () => {
           </div>
         </div>
       </div>
-      <ProductCarousel />
+      <ProductCarousel currentItemId={id} />
     </div>
   );
 };

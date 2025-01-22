@@ -5,7 +5,7 @@ import items from "../data/products.json";
 import Product from "./Product";
 import Divider from "./Divider";
 
-const ProductCarousel = () => {
+const ProductCarousel = ({ currentItemId }) => {
   let settings = {
     dots: true,
     infinite: true,
@@ -16,16 +16,15 @@ const ProductCarousel = () => {
   };
 
   return (
-    <div className="w-full flex flex-col justify-center items-center p-20">
+    <div className="w-full flex flex-col justify-center items-center p-2 md:p-10">
       <Divider />
-      <h1 className="text-2xl mt-5 mb-5">Products you might like</h1>
+      <h1 className="text-xl sm:text-2xl mt-5 mb-5">Products you might like</h1>
       <div className="w-full h-1/4">
         <Slider {...settings}>
           {items.map(
             (item) =>
-              [1, 6, 19, 13, 4, 7, 16, 3].includes(item.id) && (
-                <Product key={item.id} item={item} />
-              )
+              [1, 6, 19, 13, 4, 7, 16, 3].includes(item.id) &&
+              item.id !== currentItemId && <Product key={item.id} item={item} />
           )}
         </Slider>
       </div>
