@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Montserrat", "sans"],
+        sans: ["Poppins", "sans"],
         serif: ["Dancing Script", "serif"],
       },
       gridTemplateColumns: {
