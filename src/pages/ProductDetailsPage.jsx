@@ -16,7 +16,7 @@ const ProductDetailsPage = () => {
   const dispatch = useDispatch();
   const itemsInUserCart = useSelector((state) => state.user.itemsInUserCart);
   const [quantity, setQuantity] = useState(1);
-  const [showProductInfo, setShowProductInfo] = useState(false);
+  const [showProductInfo, setShowProductInfo] = useState(true);
 
   const { id } = useParams();
   const currentItem = items.find((item) => item.id === parseInt(id));
@@ -62,7 +62,7 @@ const ProductDetailsPage = () => {
   }
 
   return (
-    <div className="bg-black w-full h-full py-20 px-4 md:px-40 text-white">
+    <div className="bg-black w-full h-full py-20 px-4 md:px-40 text-white leading-loose">
       <div className="text-sm md:text-base flex w-full font-thin mt-12 items-center">
         <Link to={"/"}>
           <h1 className="mr-2 hover:text-gray-400">Home</h1>
