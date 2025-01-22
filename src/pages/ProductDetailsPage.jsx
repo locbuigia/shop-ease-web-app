@@ -11,6 +11,7 @@ import {
 } from "../features/userSlice";
 
 import { store } from "../store";
+import ProductCarousel from "../components/ProductCarousel";
 
 const ProductDetailsPage = () => {
   const dispatch = useDispatch();
@@ -145,6 +146,7 @@ const ProductDetailsPage = () => {
           </div>
         </div>
       </div>
+      <ProductCarousel />
     </div>
   );
 };
