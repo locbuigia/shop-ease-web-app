@@ -5,6 +5,7 @@ import {
   updateItemQuantityInUserCart,
 } from "../features/userSlice";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Product = ({ item }) => {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ const Product = ({ item }) => {
       };
 
       dispatch(updateItemQuantityInUserCart(itemToAdd));
+      toast.success("Item added to cart!");
     } else {
       let itemToAdd = {
         ...item,

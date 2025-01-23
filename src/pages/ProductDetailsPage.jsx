@@ -10,8 +10,8 @@ import {
   updateItemQuantityInUserCart,
 } from "../features/userSlice";
 
-import { store } from "../store";
 import ProductCarousel from "../components/ProductCarousel";
+import { toast } from "react-toastify";
 
 const ProductDetailsPage = () => {
   const dispatch = useDispatch();
@@ -45,7 +45,7 @@ const ProductDetailsPage = () => {
       };
       dispatch(addItemToUserCart(itemToAdd));
     }
-    console.log(store.getState());
+    toast.success("Item added to cart!");
   };
 
   if (!currentItem) {

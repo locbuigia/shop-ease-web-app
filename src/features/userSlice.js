@@ -44,7 +44,6 @@ export const userSlice = createSlice({
           return item;
         }
       });
-      toast.success("Item added to cart!");
     },
     removeItemFromUserCart: (state, action) => {
       state.itemsInUserCart = state.itemsInUserCart.filter(
