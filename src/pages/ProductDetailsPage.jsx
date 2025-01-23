@@ -125,10 +125,8 @@ const ProductDetailsPage = () => {
             </button>
             <div className="overflow-hidden">
               <p
-                className={`md:w-[32rem] font-light transition-all duration-300 ${
-                  showProductInfo
-                    ? "translate-y-0"
-                    : "-translate-y-full -mt-[100rem]"
+                className={`md:w-[32rem] font-light transition-all duration-500 ${
+                  showProductInfo ? "mt-0" : "-mt-[15rem]"
                 }`}
               >
                 Travel smart with our durable and stylish travel bag, designed
