@@ -36,7 +36,7 @@ const Product = ({ item }) => {
         >
           <img className="p-12" src={item.image} />
           <h1 className="text-sm md:text-2xl">{item.name.toUpperCase()}</h1>
-          <p className="text-sm md:text-base mt-2 font-thin">${item.price}</p>
+          <p className="text-sm md:text-base mt-2 font-light">${item.price}</p>
         </div>
       </Link>
       <button

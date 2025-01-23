@@ -18,6 +18,13 @@ const SideMenu = () => {
   const navigate = useNavigate();
   const showSideMenu = useSelector((state) => state.app.showSideMenu);
   const itemsInUserCart = useSelector((state) => state.user.itemsInUserCart);
+  const totalQty =
+    itemsInUserCart.length > 0
+      ? itemsInUserCart.reduce(
+          (totalQty, item) => (totalQty += item.quantity),
+          0
+        )
+      : 0;
 
   const handleButtonClick = (type) => {
     dispatch(setShowSideMenu(false));
@@ -73,7 +80,7 @@ const SideMenu = () => {
             >
               <div className="flex items-center mb-2">
                 <LiaShoppingBagSolid size={24} className="mr-2" />
-                <h1 className="text-2xl">{`View Cart (${itemsInUserCart.length})`}</h1>
+                <h1 className="text-2xl">{`View Cart (${totalQty})`}</h1>
               </div>
               <Divider />
             </button>

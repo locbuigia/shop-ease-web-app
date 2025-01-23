@@ -27,6 +27,14 @@ const Navbar = () => {
   const [showNavBar, setShowNavBar] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
+  const totalQty =
+    itemsInUserCart.length > 0
+      ? itemsInUserCart.reduce(
+          (totalQty, item) => (totalQty += item.quantity),
+          0
+        )
+      : 0;
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > lastScrollY) {
@@ -67,7 +75,7 @@ const Navbar = () => {
           <h1 className="text-gray-300">Shop</h1>
           <h1 className="font-bold">Ease</h1>
         </NavLink>
-        <nav className="font-thin justify-center items-center hidden sm:flex">
+        <nav className="font-light justify-center items-center hidden sm:flex">
           <NavLink
             className="text-gray-300 hover:bg-gray-600 hover:text-white rounded-md px-3 py-2 mr-4"
             to="/products"
@@ -97,9 +105,9 @@ const Navbar = () => {
             </NavLink>
           )}
           <NavLink onClick={() => dispatch(setShowCartModal(true))}>
-            <div className="hidden sm:flex text-white font-thin hover:scale-125 duration-300">
+            <div className="hidden sm:flex text-white font-light hover:scale-125 duration-300">
               <LiaShoppingBagSolid size={20} className="mr-1" />
-              {itemsInUserCart.length}
+              {totalQty}
             </div>
           </NavLink>
         </nav>

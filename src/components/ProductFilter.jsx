@@ -86,8 +86,8 @@ const ProductFilter = () => {
   };
 
   return (
-    <div className="sm:block text-sm sm:text-base text-white mx-9 pt-5 leading-loose tracking-wide font-thin">
-      <div className="flex font-thin mb-10 items-center">
+    <div className="sm:block text-sm sm:text-base text-white mx-9 pt-5 leading-loose tracking-wide font-light">
+      <div className="flex font-light mb-10 items-center">
         <button onClick={() => navigate("/")}>
           <h1 className="mr-2 hover:text-gray-400">Home</h1>
         </button>

@@ -20,7 +20,7 @@ const ProductsPage = () => {
             <h1 className="text-white text-3xl">No product found!</h1>
           </div>
         )}
-        <div className="grid grid-cols-1 lg:grid-cols-2 justify-items-center md:mx-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center md:mx-10">
           {displayedItems.length > 0 &&
             displayedItems.map((item) => <Product key={item.id} item={item} />)}
         </div>

@@ -20,6 +20,13 @@ const CartModal = () => {
   const userName = useSelector((state) => state.user.userName);
 
   const displayedUser = isUserLoggedIn ? userName : "Guest";
+  const totalQty =
+    itemsInUserCart.length > 0
+      ? itemsInUserCart.reduce(
+          (totalQty, item) => (totalQty += item.quantity),
+          0
+        )
+      : 0;
 
   const handleUpdateItemQty = (item, type) => {
     if (type === QUANTITY_REDUCTION && item.quantity === 1) {
@@ -60,12 +67,8 @@ const CartModal = () => {
             <h3 className="text-lg">{`Hi ${displayedUser},`}</h3>
             <div className="flex items-center">
               <h3 className="text-base mr-2">Cart Details</h3>
-              <p className="text-base font-thin">
-                {`(${itemsInUserCart.length} ${pluralize(
-                  itemsInUserCart.length,
-                  "item",
-                  "items"
-                )})`}
+              <p className="text-base font-light">
+                {`(${totalQty} ${pluralize(totalQty, "item", "items")})`}
               </p>
             </div>
             <Divider />
@@ -83,7 +86,7 @@ const CartModal = () => {
                       </div>
                       <div className="space-y-4 w-60">
                         <p className="font-semibold ">{item.name}</p>
-                        <p className="text-sm font-thin">
+                        <p className="text-sm font-light">
                           ${item.price.toFixed(2)}
                         </p>
                         <div className="sm:flex w-full justify-between">
@@ -130,7 +133,7 @@ const CartModal = () => {
             <div>
               <Divider />
               <div className="flex justify-between sm:mt-1">
-                <p className="font-thin">Subtotal:</p>
+                <p className="font-light">Subtotal:</p>
                 <p className="pr-1">
                   $
                   {itemsInUserCart

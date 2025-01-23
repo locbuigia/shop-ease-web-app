@@ -44,7 +44,7 @@ const ProductSort = () => {
   };
 
   return (
-    <div className="sm:flex ml-5 md:mx-20 text-sm sm:text-base justify-between items-center font-thin">
+    <div className="sm:flex ml-5 md:mx-20 text-sm sm:text-base justify-between items-center font-light">
       <h1>{displayedItems.length} products</h1>
       <div className="flex items-center hover:text-gray-400">
         <h1>Sort by: </h1>

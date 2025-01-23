@@ -80,13 +80,6 @@ const ProductDetailsPage = () => {
           <div className="w-[20rem] h-[20rem] md:w-[32rem] md:h-[32rem]">
             <img src={currentItem.image} />
           </div>
-          <p className="md:w-[32rem] font-light">
-            This is a product description. Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat.
-          </p>
         </div>
         <div>
           <h1 className="text-xl mt-10 md:text-3xl md:mt-0">
@@ -132,21 +125,24 @@ const ProductDetailsPage = () => {
             </button>
             <div className="overflow-hidden">
               <p
-                className={`md:w-[32rem] font-light duration-300 ${
-                  showProductInfo ? "translate-y-0" : "-translate-y-full"
+                className={`md:w-[32rem] font-light transition-all duration-300 ${
+                  showProductInfo
+                    ? "translate-y-0"
+                    : "-translate-y-full -mt-[100rem]"
                 }`}
               >
-                This is a product information. Lorem ipsum dolor sit amet,
-                consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commodo consequat.
+                Travel smart with our durable and stylish travel bag, designed
+                for both functionality and comfort. Featuring spacious
+                compartments, multiple pockets, and a lightweight,
+                water-resistant build, it’s perfect for keeping your essentials
+                organized on the go. Whether for a weekend getaway or a long
+                journey, this bag is your ideal travel companion!
               </p>
             </div>
           </div>
         </div>
       </div>
-      <ProductCarousel currentItemId={id} />
+      <ProductCarousel currentItemId={parseInt(id)} />
     </div>
   );
 };

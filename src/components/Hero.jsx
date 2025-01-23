@@ -13,7 +13,7 @@ const Hero = () => {
           <h1 className="text-white text-xl md:text-4xl font-semibold">
             Your one-stop shop for bags and backpacks!
           </h1>
-          <h1 className="text-white text-lg md:text-3xl mt-4 font-thin">
+          <h1 className="text-white text-lg md:text-3xl mt-4 font-light">
             Discover the Best Deals Today!
           </h1>
           <button
