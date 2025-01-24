@@ -7,8 +7,8 @@ import {
 } from "../features/appSlice";
 import { MdClose } from "react-icons/md";
 
-import { FaGithub, FaLinkedin, FaRegUser, FaSearch } from "react-icons/fa";
-import Divider from "./Divider";
+import { FaGithub, FaLinkedin, FaRegUser } from "react-icons/fa";
+import { IoSearch } from "react-icons/io5";
 import { LiaShoppingBagSolid } from "react-icons/lia";
 import { useNavigate } from "react-router-dom";
 import {
@@ -17,6 +17,7 @@ import {
   SIDE_MENU_PRODUCTS,
   SIDE_MENU_SEARCH,
 } from "../constants";
+import Divider from "./Divider";
 
 const SideMenu = () => {
   const dispatch = useDispatch();
@@ -76,7 +77,7 @@ const SideMenu = () => {
               onClick={() => handleButtonClick(SIDE_MENU_SEARCH)}
             >
               <div className="flex items-center mb-2">
-                <FaSearch size={24} className="mr-2" />
+                <IoSearch size={24} className="mr-2" />
                 <h1 className="text-2xl">Seach Product</h1>
               </div>
               <Divider />

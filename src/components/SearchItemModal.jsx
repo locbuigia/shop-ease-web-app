@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { MdClose } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { setShowSearchModal } from "../features/appSlice";
+import { Link } from "react-router-dom";
+import { MdClose } from "react-icons/md";
 
 import items from "../data/products.json";
 import Divider from "./Divider";
-import { Link } from "react-router-dom";
 
 const SearchItemModal = () => {
   const dispatch = useDispatch();
