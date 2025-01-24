@@ -47,7 +47,7 @@ const CartModal = () => {
   return (
     <div className="">
       <div
-        className={`inset-0 w-full h-full fixed duration-500 ${
+        className={`inset-0 hidden sm:block w-full h-full fixed duration-500 ${
           showCartModal ? "z-40 bg-opacity-30 bg-white" : "-z-50"
         }`}
       ></div>
