@@ -13,5 +13,6 @@ export const QUANTITY_INCREMENT = "INCREMENT";
 export const QUANTITY_REDUCTION = "REDUCTION";
 
 export const SIDE_MENU_PRODUCTS = "PRODUCTS";
+export const SIDE_MENU_SEARCH = "SEARCH";
 export const SIDE_MENU_LOGIN = "LOGIN";
 export const SIDE_MENU_CART = "CART";

@@ -8,6 +8,9 @@ import LoginModal from "../components/LoginModal";
 import Navbar from "../components/Navbar";
 import CartModal from "../components/CartModal";
 import SideMenu from "../components/SideMenu";
+import SearchItemModal from "../components/SearchItemModal";
+
+import { store } from "../store";
 
 const MainLayout = () => {
   const showLoginModal = useSelector((state) => state.app.showLoginModal);
@@ -27,12 +30,15 @@ const MainLayout = () => {
     };
   }, [showCartModal]);
 
+  console.log(store.getState());
+
   return (
     <>
       <Outlet />
       <Navbar />
       <Footer />
       <CartModal />
+      <SearchItemModal />
       <SideMenu />
       {showLoginModal && <LoginModal />}
       <ToastContainer

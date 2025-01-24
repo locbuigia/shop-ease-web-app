@@ -1,9 +1,13 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setShowCartModal, setShowSideMenu } from "../features/appSlice";
+import {
+  setShowCartModal,
+  setShowSearchModal,
+  setShowSideMenu,
+} from "../features/appSlice";
 import { MdClose } from "react-icons/md";
 
-import { FaGithub, FaLinkedin, FaRegUser } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaRegUser, FaSearch } from "react-icons/fa";
 import Divider from "./Divider";
 import { LiaShoppingBagSolid } from "react-icons/lia";
 import { useNavigate } from "react-router-dom";
@@ -11,6 +15,7 @@ import {
   SIDE_MENU_CART,
   SIDE_MENU_LOGIN,
   SIDE_MENU_PRODUCTS,
+  SIDE_MENU_SEARCH,
 } from "../constants";
 
 const SideMenu = () => {
@@ -35,6 +40,8 @@ const SideMenu = () => {
       console.log("Handle login");
     } else if (type === SIDE_MENU_CART) {
       dispatch(setShowCartModal(true));
+    } else if (type === SIDE_MENU_SEARCH) {
+      dispatch(setShowSearchModal(true));
     }
   };
 
@@ -58,14 +65,24 @@ const SideMenu = () => {
         <div className="w-full pt-20 pb-10 px-4 flex flex-col items-center justify-between">
           <div className="w-full">
             <button
-              className="w-full flex flex-col items-start mt-14 mb-6"
+              className="w-full flex flex-col items-start mt-8 mb-6"
               onClick={() => handleButtonClick(SIDE_MENU_PRODUCTS)}
             >
               <h1 className="text-2xl mb-2">View Products</h1>
               <Divider />
             </button>
             <button
-              className="w-full flex flex-col items-start mt-14 mb-6"
+              className="w-full flex flex-col items-start mt-8 mb-6"
+              onClick={() => handleButtonClick(SIDE_MENU_SEARCH)}
+            >
+              <div className="flex items-center mb-2">
+                <FaSearch size={24} className="mr-2" />
+                <h1 className="text-2xl">Seach Product</h1>
+              </div>
+              <Divider />
+            </button>
+            <button
+              className="w-full flex flex-col items-start mt-8 mb-6"
               onClick={() => handleButtonClick(SIDE_MENU_LOGIN)}
             >
               <div className="flex items-center mb-2">
@@ -75,7 +92,7 @@ const SideMenu = () => {
               <Divider />
             </button>
             <button
-              className="w-full flex flex-col items-start mt-14 mb-6"
+              className="w-full flex flex-col items-start mt-8 mb-6"
               onClick={() => handleButtonClick(SIDE_MENU_CART)}
             >
               <div className="flex items-center mb-2">

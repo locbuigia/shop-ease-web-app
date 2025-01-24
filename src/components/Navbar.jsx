@@ -20,8 +20,6 @@ import { IoMenuSharp } from "react-icons/io5";
 import items from "../data/products.json";
 import SearchResult from "./SearchResult";
 
-import { store } from "../store";
-
 const Navbar = () => {
   const dispatch = useDispatch();
 
@@ -87,8 +85,6 @@ const Navbar = () => {
     }
   };
 
-  console.log(store.getState());
-
   return (
     <header
       className={`bg-zinc-800 bg-opacity-70 py-2 px-0 sm:px-2 md:px-4 fixed w-full top-0 z-10`}
@@ -108,12 +104,10 @@ const Navbar = () => {
             } items-center duration-300`}
           >
             <input
-              className={`bg-transparent ${
+              className={`bg-transparent hidden sm:block ${
                 showSearchResultModal ? "w-60" : "w-24"
               } focus:bg-black p-2 focus:outline-none duration-300`}
               type="text"
-              id="title"
-              name="title"
               placeholder="Search..."
               onFocus={() => dispatch(setShowSearchResultModal(true))}
               onBlur={() => dispatch(setShowSearchResultModal(false))}
