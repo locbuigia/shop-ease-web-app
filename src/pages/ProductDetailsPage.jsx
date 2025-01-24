@@ -38,6 +38,7 @@ const ProductDetailsPage = () => {
       };
 
       dispatch(updateItemQuantityInUserCart(itemToAdd));
+      toast.success("Item added to cart!");
     } else {
       let itemToAdd = {
         ...currentItem,
@@ -45,7 +46,6 @@ const ProductDetailsPage = () => {
       };
       dispatch(addItemToUserCart(itemToAdd));
     }
-    toast.success("Item added to cart!");
   };
 
   if (!currentItem) {

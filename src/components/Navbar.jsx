@@ -9,12 +9,18 @@ import {
 import {
   setShowCartModal,
   setShowLoginModal,
+  setShowSearchResultModal,
   setShowSideMenu,
 } from "../features/appSlice";
 import { toast } from "react-toastify";
-import { FaRegUser } from "react-icons/fa";
+import { FaRegUser, FaSearch } from "react-icons/fa";
 import { LiaShoppingBagSolid } from "react-icons/lia";
 import { IoMenuSharp } from "react-icons/io5";
+
+import items from "../data/products.json";
+import SearchResult from "./SearchResult";
+
+import { store } from "../store";
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -23,9 +29,14 @@ const Navbar = () => {
   const isUserLoggedIn = useSelector((state) => state.user.isLoggedIn);
   const userName = useSelector((state) => state.user.userName);
   const itemsInUserCart = useSelector((state) => state.user.itemsInUserCart);
+  const showSearchResultModal = useSelector(
+    (state) => state.app.showSearchResultModal
+  );
 
-  const [showNavBar, setShowNavBar] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [showNavBar, setShowNavBar] = useState(true);
+  const [searchInput, setSearchInput] = useState("");
+  const [searchedItems, setSearchedItems] = useState([]);
 
   const totalQty =
     itemsInUserCart.length > 0
@@ -63,6 +74,21 @@ const Navbar = () => {
     dispatch(setShowSideMenu(true));
   };
 
+  const handleSearch = (input) => {
+    setSearchInput(input);
+    if (input.length === 0) {
+      setSearchedItems([]);
+    } else {
+      setSearchedItems(
+        items.filter((item) =>
+          item.name.toLowerCase().includes(input.toLowerCase())
+        )
+      );
+    }
+  };
+
+  console.log(store.getState());
+
   return (
     <header
       className={`bg-zinc-800 bg-opacity-70 py-2 px-0 sm:px-2 md:px-4 fixed w-full top-0 z-10`}
@@ -76,6 +102,35 @@ const Navbar = () => {
           <h1 className="font-bold">Ease</h1>
         </NavLink>
         <nav className="font-light justify-center items-center hidden sm:flex">
+          <div
+            className={`bg-transparent flex text-white ${
+              !showSearchResultModal && "border-b-[1px] pr-4 mr-4"
+            } items-center duration-300`}
+          >
+            <input
+              className={`bg-transparent ${
+                showSearchResultModal ? "w-60" : "w-24"
+              } focus:bg-black p-2 focus:outline-none duration-300`}
+              type="text"
+              id="title"
+              name="title"
+              placeholder="Search..."
+              onFocus={() => dispatch(setShowSearchResultModal(true))}
+              onBlur={() => dispatch(setShowSearchResultModal(false))}
+              value={searchInput}
+              onChange={(e) => handleSearch(e.target.value)}
+            />
+            {!showSearchResultModal && <FaSearch size={16} />}
+            <div
+              className={`absolute duration-300 ${
+                showSearchResultModal && searchInput.length > 0
+                  ? "mt-5 opacity-100"
+                  : "opacity-0 -z-50"
+              }`}
+            >
+              <SearchResult items={searchedItems} searchInput={searchInput} />
+            </div>
+          </div>
           <NavLink
             className="text-gray-300 hover:bg-gray-600 hover:text-white rounded-md px-3 py-2 mr-4"
             to="/products"
