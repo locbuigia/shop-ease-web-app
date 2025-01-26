@@ -63,7 +63,7 @@ const CartModal = () => {
           >
             <MdClose size={30} />
           </button>
-          <div className="h-full overflow-y-auto">
+          <div className="h-fit overflow-y-auto">
             <h3 className="text-lg">{`Hi ${displayedUser},`}</h3>
             <div className="flex items-center">
               <h3 className="text-base mr-2">Cart Details</h3>
@@ -77,7 +77,7 @@ const CartModal = () => {
                 <p>Your cart is empty.</p>
               </div>
             ) : (
-              <div className="h-5/6">
+              <div>
                 <ul className="w-full space-y-4 mt-2">
                   {itemsInUserCart.map((item, index) => (
                     <li
@@ -137,7 +137,7 @@ const CartModal = () => {
             )}
           </div>
           {itemsInUserCart.length > 0 && (
-            <div>
+            <div className="mb-16 mt-4">
               <Divider />
               <div className="flex justify-between sm:mt-1">
                 <p className="font-light">Subtotal:</p>
