@@ -63,7 +63,7 @@ const ProductDetailsPage = () => {
   }
 
   return (
-    <div className="bg-black w-full h-full py-20 px-4 md:px-40 text-white leading-loose">
+    <div className="bg-black w-full h-full py-20 px-4 lg:px-8 xl:px-28 text-white leading-loose duration-300">
       <div className="text-sm md:text-base flex w-full font-light mt-12 items-center">
         <Link to={"/"}>
           <h1 className="mr-2 hover:text-gray-400">Home</h1>
@@ -77,7 +77,7 @@ const ProductDetailsPage = () => {
       </div>
       <div className="md:flex justify-center items-center">
         <div className="md:mr-24">
-          <div className="w-[20rem] h-[20rem] md:w-[32rem] md:h-[32rem]">
+          <div className="w-[20rem] h-[20rem] lg:w-[32rem] lg:h-[32rem]">
             <img src={currentItem.image} />
           </div>
         </div>
@@ -109,23 +109,23 @@ const ProductDetailsPage = () => {
           </div>
           <button
             onClick={handleAddItemToCart}
-            className="mt-10 mb-4 text-base border-[1px] border-white px-20 py-4 text-white bg-black bg-opacity-20 hover:bg-white hover:text-black duration-300"
+            className="mt-10 mb-4 text-base border-[1px] border-white px-16 py-4 text-white bg-black bg-opacity-20 hover:bg-white hover:text-black duration-300"
           >
             Add To Cart
           </button>
-          <div className="space-y-4 mt-10">
+          <div className="space-y-4 mt-10 pr-4 lg:pr-8">
             <button
               className="w-full hover:text-gray-500 duration-200"
               onClick={() => setShowProductInfo(!showProductInfo)}
             >
-              <div className="flex justify-between">
+              <div className="flex justify-between items-center">
                 <h1>PRODUCT INFO</h1>
                 {showProductInfo ? <LuMinus size={20} /> : <LuPlus size={20} />}
               </div>
             </button>
             <div className="overflow-hidden">
               <p
-                className={`md:w-[32rem] font-light transition-all duration-500 ${
+                className={`w-fit font-light transition-all duration-500 ${
                   showProductInfo ? "mt-0" : "-mt-[40rem]"
                 }`}
               >
@@ -140,7 +140,9 @@ const ProductDetailsPage = () => {
           </div>
         </div>
       </div>
-      <ProductCarousel currentItemId={parseInt(id)} />
+      <div className="px-6">
+        <ProductCarousel currentItemId={parseInt(id)} />
+      </div>
     </div>
   );
 };

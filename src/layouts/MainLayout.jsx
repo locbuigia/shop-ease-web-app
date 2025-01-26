@@ -10,8 +10,6 @@ import CartModal from "../components/CartModal";
 import SideMenu from "../components/SideMenu";
 import SearchItemModal from "../components/SearchItemModal";
 
-import { store } from "../store";
-
 const MainLayout = () => {
   const showLoginModal = useSelector((state) => state.app.showLoginModal);
   const showCartModal = useSelector((state) => state.app.showCartModal);
@@ -29,8 +27,6 @@ const MainLayout = () => {
       document.body.style.overflow = originalStyle;
     };
   }, [showCartModal]);
-
-  console.log(store.getState());
 
   return (
     <>

@@ -17,7 +17,7 @@ const ProductType = () => {
         className="relative w-full h-full"
       >
         <img className="w-full sm:h-full" src={backpackTypeImg} />
-        <div className="absolute flex justify-center items-center bottom-0 w-full h-full text-[0px] hover:text-3xl hover:bg-black hover:bg-opacity-60 duration-500">
+        <div className="absolute flex justify-center items-center bottom-0 w-full h-full text-3xl bg-black bg-opacity-50 hover:text-3xl sm:text-[0px] sm:bg-transparent hover:bg-black hover:bg-opacity-60 duration-500">
           <h1>BACKPACK</h1>
         </div>
       </Link>
@@ -26,7 +26,7 @@ const ProductType = () => {
         className="relative w-full h-full"
       >
         <img className="w-full sm:h-full" src={duffleTypeImg} />
-        <div className="absolute flex justify-center items-center bottom-0 w-full h-full text-[0px] hover:text-3xl hover:bg-black hover:bg-opacity-60 duration-500">
+        <div className="absolute flex justify-center items-center bottom-0 w-full h-full text-3xl bg-black bg-opacity-50 hover:text-3xl sm:text-[0px] sm:bg-transparent hover:bg-black hover:bg-opacity-60 duration-500">
           DUFFLE
         </div>
       </Link>
@@ -35,7 +35,7 @@ const ProductType = () => {
         className="relative w-full h-full"
       >
         <img className="w-full sm:h-full" src={travelTypeImg} />
-        <div className="absolute flex justify-center items-center bottom-0 w-full h-full text-[0px] hover:text-3xl hover:bg-black hover:bg-opacity-60 duration-500">
+        <div className="absolute flex justify-center items-center bottom-0 w-full h-full text-3xl bg-black bg-opacity-50 hover:text-3xl sm:text-[0px] sm:bg-transparent hover:bg-black hover:bg-opacity-60 duration-500">
           TRAVEL
         </div>
       </Link>

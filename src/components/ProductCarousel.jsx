@@ -1,24 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 
 import items from "../data/products.json";
 import Product from "./Product";
 import Divider from "./Divider";
 
-const ProductCarousel = ({ currentItemId }) => {
+const ProductCarousel = ({
+  currentItemId = null,
+  showDivider = false,
+  title = "Products you might like",
+}) => {
+  const [itemsToShow, setItemsToShow] = useState(
+    window.innerWidth < 1200 ? 1 : 3
+  );
+
+  useEffect(() => {
+    const updateWindowDimensions = () => {
+      setItemsToShow(window.innerWidth < 1200 ? 1 : 3);
+    };
+
+    window.addEventListener("resize", updateWindowDimensions);
+
+    return () => window.removeEventListener("resize", updateWindowDimensions);
+  }, [window.innerWidth]);
+
   let settings = {
-    dots: true,
     infinite: true,
-    speed: 500,
-    slidesToShow: window.innerWidth < 720 ? 1 : 3,
+    speed: 1000,
+    slidesToShow: itemsToShow,
     slidesToScroll: 1,
     adaptiveHeight: true,
+    autoplay: true,
   };
 
   return (
-    <div className="w-full flex flex-col justify-center items-center p-2 md:p-10">
-      <Divider />
-      <h1 className="text-xl sm:text-2xl mt-5 mb-5">Products you might like</h1>
+    <div className="w-full flex flex-col justify-center items-center p-2 md:p-10 text-white">
+      {showDivider && <Divider />}
+      <h1 className="text-xl md:text-2xl mt-5 mb-5">{title}</h1>
       <div className="w-full h-1/4">
         <Slider {...settings}>
           {items.map(
