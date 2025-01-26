@@ -63,7 +63,7 @@ const CartModal = () => {
           >
             <MdClose size={30} />
           </button>
-          <div>
+          <div className="h-full overflow-y-auto">
             <h3 className="text-lg">{`Hi ${displayedUser},`}</h3>
             <div className="flex items-center">
               <h3 className="text-base mr-2">Cart Details</h3>
@@ -77,64 +77,71 @@ const CartModal = () => {
                 <p>Your cart is empty.</p>
               </div>
             ) : (
-              <ul className="space-y-4 h-[30rem] mt-2 overflow-y-auto">
-                {itemsInUserCart.map((item, index) => (
-                  <li key={index} className="w-full flex justify-between pr-4">
-                    <div className="flex">
-                      <div className="sm:w-32 sm:h-32 mr-4">
-                        <img src={item.image} />
-                      </div>
-                      <div className="space-y-4 w-60">
-                        <p className="font-semibold ">{item.name}</p>
-                        <p className="text-sm font-light">
-                          ${item.price.toFixed(2)}
-                        </p>
-                        <div className="sm:flex w-full justify-between">
-                          <div className="flex items-center w-28 justify-between sm:space-x-2 border-[1px] border-white">
-                            <button
-                              onClick={() =>
-                                handleUpdateItemQty(item, QUANTITY_REDUCTION)
-                              }
-                              className="px-2 py-1 text-white"
-                            >
-                              <LuMinus />
-                            </button>
-                            <span>{item.quantity}</span>
-                            <button
-                              onClick={() =>
-                                handleUpdateItemQty(item, QUANTITY_INCREMENT)
-                              }
-                              className="px-2 py-1 text-white"
-                            >
-                              <LuPlus />
-                            </button>
-                          </div>
-                          <p className="mt-4 sm:mt-0">
-                            ${(item.quantity * item.price).toFixed(2)}
+              <div className="h-5/6">
+                <ul className="w-full space-y-4 mt-2">
+                  {itemsInUserCart.map((item, index) => (
+                    <li
+                      key={index}
+                      className="flex w-full justify-between pr-4"
+                    >
+                      <div className="flex w-full">
+                        <div className="mr-4">
+                          <img
+                            className="min-w-8 min-h-8 h-28 w-28"
+                            src={item.image}
+                          />
+                        </div>
+                        <div className="space-y-4 w-full">
+                          <p className="font-semibold ">{item.name}</p>
+                          <p className="text-sm font-light">
+                            ${item.price.toFixed(2)}
                           </p>
+                          <div className="sm:flex w-full justify-between">
+                            <div className="flex items-center w-28 justify-between sm:space-x-2 border-[1px] border-white">
+                              <button
+                                onClick={() =>
+                                  handleUpdateItemQty(item, QUANTITY_REDUCTION)
+                                }
+                                className="px-2 py-1 text-white"
+                              >
+                                <LuMinus />
+                              </button>
+                              <span>{item.quantity}</span>
+                              <button
+                                onClick={() =>
+                                  handleUpdateItemQty(item, QUANTITY_INCREMENT)
+                                }
+                                className="px-2 py-1 text-white"
+                              >
+                                <LuPlus />
+                              </button>
+                            </div>
+                            <p className="mt-4 sm:mt-0 font-semibold">
+                              ${(item.quantity * item.price).toFixed(2)}
+                            </p>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <div>
-                      <button
-                        onClick={() => handleRemoveItemFromCart(item)}
-                        className="text-red-500 hover:scale-125 duration-300 mt-10 sm:mt-0"
-                      >
-                        <RiDeleteBinLine size={20} />
-                      </button>
-                    </div>
-                  </li>
-                ))}
-              </ul>
+                      <div>
+                        <button
+                          onClick={() => handleRemoveItemFromCart(item)}
+                          className="text-red-500 hover:scale-125 duration-300 mt-10 sm:mt-0"
+                        >
+                          <RiDeleteBinLine size={20} />
+                        </button>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             )}
           </div>
-
           {itemsInUserCart.length > 0 && (
             <div>
               <Divider />
               <div className="flex justify-between sm:mt-1">
                 <p className="font-light">Subtotal:</p>
-                <p className="pr-1">
+                <p className="pr-1 font-semibold">
                   $
                   {itemsInUserCart
                     .reduce(
@@ -144,7 +151,7 @@ const CartModal = () => {
                     .toFixed(2)}
                 </p>
               </div>
-              <div className="mt-4 sm:mt-8 sm:mb-6 flex justify-center">
+              <div className="mt-4 sm:mt-8 flex justify-center">
                 <button className="w-64 border-2 border-black p-2 text-black bg-white hover:bg-black hover:text-white hover:border-white duration-300">
                   Checkout
                 </button>
