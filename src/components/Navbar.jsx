@@ -92,6 +92,7 @@ const Navbar = () => {
       <div className="flex justify-between items-center w-full px-5">
         <NavLink
           to="/"
+          onClick={() => window.scrollTo(0, 0)}
           className="flex my-1 text-white font-serif text-3xl sm:text-5xl"
         >
           <h1 className="text-gray-300">Shop</h1>
