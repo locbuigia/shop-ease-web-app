@@ -137,7 +137,7 @@ const CartModal = () => {
             )}
           </div>
           {itemsInUserCart.length > 0 && (
-            <div className="mb-16 mt-4">
+            <div className="mb-28 mt-2">
               <Divider />
               <div className="flex justify-between sm:mt-1">
                 <p className="font-light">Subtotal:</p>
