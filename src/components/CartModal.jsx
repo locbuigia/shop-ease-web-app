@@ -73,7 +73,7 @@ const CartModal = () => {
             </div>
             <Divider />
             {itemsInUserCart.length === 0 ? (
-              <div className="w-full h-full flex justify-center items-center">
+              <div className="w-full flex justify-center items-center">
                 <p>Your cart is empty.</p>
               </div>
             ) : (
