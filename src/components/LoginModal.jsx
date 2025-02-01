@@ -51,6 +51,7 @@ const LoginModal = () => {
     dispatch(updateUserEmail(userEmailInput));
     dispatch(setUserLoginStatus(true));
     dispatch(setShowLoginModal(false));
+    clearInput();
     toast.success(`Welcome to ShopEase, ${userNameInput}!`);
   };
 
@@ -67,6 +68,7 @@ const LoginModal = () => {
       dispatch(updateUserEmail(foundUser.userEmail));
       dispatch(setUserLoginStatus(true));
       dispatch(setShowLoginModal(false));
+      clearInput();
       toast.success(`Welcome back, ${foundUser.userName}!`);
     } else {
       toast.error("Invalid credentials!");

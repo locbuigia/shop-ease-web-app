@@ -17,14 +17,24 @@ import {
   SIDE_MENU_LOGIN,
   SIDE_MENU_PRODUCTS,
   SIDE_MENU_SEARCH,
+  SIDE_MENU_SIGNOUT,
 } from "../constants";
 import Divider from "./Divider";
+import { IoIosLogOut } from "react-icons/io";
+import { toast } from "react-toastify";
+import {
+  setUserLoginStatus,
+  updateUserEmail,
+  updateUserName,
+} from "../features/userSlice";
 
 const SideMenu = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const showSideMenu = useSelector((state) => state.app.showSideMenu);
   const itemsInUserCart = useSelector((state) => state.user.itemsInUserCart);
+  const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
+
   const totalQty =
     itemsInUserCart.length > 0
       ? itemsInUserCart.reduce(
@@ -44,6 +54,11 @@ const SideMenu = () => {
       dispatch(setShowCartModal(true));
     } else if (type === SIDE_MENU_SEARCH) {
       dispatch(setShowSearchModal(true));
+    } else if (type === SIDE_MENU_SIGNOUT) {
+      dispatch(updateUserName(""));
+      dispatch(updateUserEmail(""));
+      dispatch(setUserLoginStatus(false));
+      toast.success("You have signed out successfully!");
     }
   };
 
@@ -85,16 +100,6 @@ const SideMenu = () => {
             </button>
             <button
               className="w-full flex flex-col items-start mt-8 mb-6"
-              onClick={() => handleButtonClick(SIDE_MENU_LOGIN)}
-            >
-              <div className="flex items-center mb-2">
-                <FaRegUser size={24} className="mr-2" />
-                <h1 className="text-2xl">Login</h1>
-              </div>
-              <Divider />
-            </button>
-            <button
-              className="w-full flex flex-col items-start mt-8 mb-6"
               onClick={() => handleButtonClick(SIDE_MENU_CART)}
             >
               <div className="flex items-center mb-2">
@@ -103,6 +108,29 @@ const SideMenu = () => {
               </div>
               <Divider />
             </button>
+            {isLoggedIn ? (
+              <button
+                className="w-full flex flex-col items-start mt-8 mb-6"
+                onClick={() => handleButtonClick(SIDE_MENU_SIGNOUT)}
+              >
+                <div className="flex items-center mb-2">
+                  <IoIosLogOut size={24} className="mr-2" />
+                  <h1 className="text-2xl">Sign Out</h1>
+                </div>
+                <Divider />
+              </button>
+            ) : (
+              <button
+                className="w-full flex flex-col items-start mt-8 mb-6"
+                onClick={() => handleButtonClick(SIDE_MENU_LOGIN)}
+              >
+                <div className="flex items-center mb-2">
+                  <FaRegUser size={24} className="mr-2" />
+                  <h1 className="text-2xl">Login</h1>
+                </div>
+                <Divider />
+              </button>
+            )}
           </div>
           <div>
             <p className="tracking-wide leading-loose my-2">
