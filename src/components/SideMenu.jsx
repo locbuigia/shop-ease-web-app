@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setShowCartModal,
+  setShowLoginModal,
   setShowSearchModal,
   setShowSideMenu,
 } from "../features/appSlice";
@@ -38,7 +39,7 @@ const SideMenu = () => {
     if (type === SIDE_MENU_PRODUCTS) {
       navigate("/products");
     } else if (type === SIDE_MENU_LOGIN) {
-      console.log("Handle login");
+      dispatch(setShowLoginModal(true));
     } else if (type === SIDE_MENU_CART) {
       dispatch(setShowCartModal(true));
     } else if (type === SIDE_MENU_SEARCH) {

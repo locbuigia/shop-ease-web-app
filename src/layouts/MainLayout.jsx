@@ -17,7 +17,7 @@ const MainLayout = () => {
   useLayoutEffect(() => {
     const originalStyle = window.getComputedStyle(document.body).overflow;
 
-    if (showCartModal) {
+    if ((showCartModal, showLoginModal)) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = originalStyle;
@@ -26,7 +26,7 @@ const MainLayout = () => {
     return () => {
       document.body.style.overflow = originalStyle;
     };
-  }, [showCartModal]);
+  }, [showCartModal, showLoginModal]);
 
   return (
     <>
@@ -36,7 +36,7 @@ const MainLayout = () => {
       <CartModal />
       <SearchItemModal />
       <SideMenu />
-      {showLoginModal && <LoginModal />}
+      <LoginModal />
       <ToastContainer
         position="top-center"
         autoClose={2500}
