@@ -115,7 +115,7 @@ const SideMenu = () => {
               >
                 <div className="flex items-center mb-2">
                   <IoIosLogOut size={24} className="mr-2" />
-                  <h1 className="text-2xl">Sign Out</h1>
+                  <h1 className="text-2xl">Log Out</h1>
                 </div>
                 <Divider />
               </button>
