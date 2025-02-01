@@ -20,7 +20,6 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     setUserLoginStatus: (state, action) => {
-      console.log(action);
       state.isLoggedIn = action.payload;
     },
     updateUserName: (state, action) => {
